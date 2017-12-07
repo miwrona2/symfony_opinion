@@ -14,11 +14,11 @@ Class OpinionController extends Controller
      */
     public function listAction(Request $request) 
     {
-        $todos = $this->getDoctrine()
+        $opinions = $this->getDoctrine()
             ->getRepository('AppBundle:Opinion')
             ->findAll();
-//        $todos = array ('1' => 'val1', '2' => 'val2');
-    return $this->render('todo/index.html.twig', array('todos' => $todos));
+        
+    return $this->render('opinion/index.html.twig', array('opinions' => $opinions));
     }
     
 }
