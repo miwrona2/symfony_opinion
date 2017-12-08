@@ -39,7 +39,7 @@ Class OpinionController extends Controller
             ->add('content', TextType::class)
             ->add('rate', NumberType::class)
             ->add('nickname', TextType::class)
-            ->add('modified', DateTimeType::class)
+//            ->add('modified', DateTimeType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Opinion'))
             ->getForm();
         
@@ -49,12 +49,14 @@ Class OpinionController extends Controller
                 $content = $form['content']->getData();
                 $rate = $form['rate']->getData();
                 $nickname = $form['nickname']->getData();
-                $modified = $form['modified']->getData();
+//                $modified = $form['modified']->getData();
+                
+                $now = new\DateTime('now');
                 
                 $opinion->setContent($content);
                 $opinion->setRate($rate);
                 $opinion->setNickname($nickname);
-                $opinion->setModified($modified);
+                $opinion->setModified($now);
                 
                 $em = $this->getDoctrine()->getManager();
                 
