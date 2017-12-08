@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 Class OpinionController extends Controller
 {
@@ -37,7 +38,7 @@ Class OpinionController extends Controller
         
         $form = $this->createFormBuilder($opinion)
             ->add('content', TextType::class)
-            ->add('rate', NumberType::class)
+            ->add('rate', ChoiceType::class,array('choices' => array('1'=>1,'1'=>1,'2'=>2,'3'=>3,'4'=>4,'5'=>5)))
             ->add('nickname', TextType::class)
 //            ->add('modified', DateTimeType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Opinion'))
