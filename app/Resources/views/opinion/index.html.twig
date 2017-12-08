@@ -2,12 +2,23 @@
 
 {% block body %}
 
-<h1>hello world</h1>
+<h2>Opinie</h2>
     <ul>
         {% for opinion in opinions %}
         
-        <li>{{ opinion.content }}</li>
+        <li>{{ opinion.content }}
+        <b>Modified: </b>
+        {{ opinion.modified|date('F j, Y, g:i a') }}</li>
         
         {% endfor %}
     </ul>
+<h2>Dodaj nową opinię</h2>
+<a href="http://localhost/sym/symfony_opinion/web/app_dev.php/opinion/create">dodaj</a>
 {% endblock %}
+
+
+
+
+
+
+

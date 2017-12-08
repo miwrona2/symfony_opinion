@@ -35,7 +35,19 @@ class Opinion
      */
     private $rate;
 
- 
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="nickname", type="string")
+     */
+    private $nickname;
+     
+    /**
+    * @var \DateTime
+    * 
+    * @ORM\Column(name="modified", type="datetime")
+    */   
+    private $modified;
 
 
     /**
@@ -96,5 +108,52 @@ class Opinion
         return $this->rate;
     }
 
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     *
+     * @return Opinion
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+    
+    /**
+     * Set nickname
+     * 
+     * @param string $nickname
+     * 
+     * @return Opinion
+     */
+    public function setNickname($nickname) 
+    {
+        $this->nickname = $nickname;
+        
+        return $this;
+    }
+    
+    /**
+     * Get nickname
+     * 
+     * @return string
+     */
+    public function getNickname() 
+    {
+        return $this->nickname;
+    }
 }
 

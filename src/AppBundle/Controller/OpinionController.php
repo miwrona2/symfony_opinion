@@ -10,6 +10,7 @@ use AppBundle\Entity\Opinion;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 Class OpinionController extends Controller
 {
@@ -37,6 +38,8 @@ Class OpinionController extends Controller
         $form = $this->createFormBuilder($opinion)
             ->add('content', TextType::class)
             ->add('rate', NumberType::class)
+            ->add('nickname', TextType::class)
+            ->add('modified', DateTimeType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Opinion'))
             ->getForm();
         
@@ -45,9 +48,13 @@ Class OpinionController extends Controller
             if($form->isSubmitted() && $form->isValid()) {
                 $content = $form['content']->getData();
                 $rate = $form['rate']->getData();
+                $nickname = $form['nickname']->getData();
+                $modified = $form['modified']->getData();
                 
                 $opinion->setContent($content);
                 $opinion->setRate($rate);
+                $opinion->setNickname($nickname);
+                $opinion->setModified($modified);
                 
                 $em = $this->getDoctrine()->getManager();
                 
